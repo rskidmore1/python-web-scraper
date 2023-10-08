@@ -1,8 +1,19 @@
 from flask import Flask
 from flask import jsonify
+from flask import request
+from bs4 import BeautifulSoup
+from flask_cors import CORS
+import requests
+
+
 
 
 app = Flask(__name__)
+
+CORS(app)
+
+CORS(app, origins=['*'])
+
 
 @app.route('/hello/', methods=['GET', 'POST'])
 def welcome():
@@ -10,18 +21,33 @@ def welcome():
 
 @app.route('/other/', methods=['GET', 'POST'])
 def other():
+    # return "hi";
     return jsonify({'name':'Jimit',
                     'address':'India'})
 
+# GET requests will be blocked
+@app.route('/json-example/', methods=['GET', 'POST'])
+def json_example():
+
+    # Making a GET request
+    # r = requests.get('https://www.geeksforgeeks.org/python-programming-language/')
+    r = requests.get('https://www.geeksforgeeks.org/python-programming-language/')
+#
+
+    # check status code for response received
+    # success code - 200
+    # print(r)
+
+    # Parsing the HTML
+    soup = BeautifulSoup(r.content, 'html.parser')
+    # print(soup.prettify())
+    print(type(soup.prettify()))
 
 
-# @app.route('/<int:number>/')
-# def incrementer(number):
-#     return "Incremented number is " + str(number+1)
-
-# @app.route('/<string:name>/')
-# def hello(name):
-#     return "Hello " + name
+    # return jsonify({'name':'Jimit',
+    #                 'content': 'Some content'})
+    return jsonify({'name':'Jimit',
+                    'content':str(soup.prettify())})
 
 @app.route('/person/', methods=['GET', 'POST'])
 def hello():
