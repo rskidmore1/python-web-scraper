@@ -30,24 +30,18 @@ def other():
 def json_example():
 
     # Making a GET request
-    # r = requests.get('https://www.geeksforgeeks.org/python-programming-language/')
     r = requests.get('https://www.geeksforgeeks.org/python-programming-language/')
 #
-
-    # check status code for response received
-    # success code - 200
-    # print(r)
 
     # Parsing the HTML
     soup = BeautifulSoup(r.content, 'html.parser')
     # print(soup.prettify())
-    print(type(soup.prettify()))
+    # print(type(soup.prettify()))
 #
 
     # return jsonify({'name':'Jimit',
     #                 'content': 'Some content'})
-    return jsonify({'name':'Jimit',
-                    'content':str(soup.prettify())})
+    return jsonify({'content':str(soup.prettify())})
 
 @app.route('/person/', methods=['GET', 'POST'])
 def hello():
