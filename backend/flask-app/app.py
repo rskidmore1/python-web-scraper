@@ -42,7 +42,7 @@ def json_example():
     soup = BeautifulSoup(r.content, 'html.parser')
     # print(soup.prettify())
     print(type(soup.prettify()))
-
+#
 
     # return jsonify({'name':'Jimit',
     #                 'content': 'Some content'})
