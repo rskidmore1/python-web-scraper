@@ -26,22 +26,32 @@ def other():
                     'address':'India'})
 
 # GET requests will be blocked
-@app.route('/json-example/', methods=['GET', 'POST'])
-def json_example():
+@app.route('/json-example/', defaults={'url' : ''})
+@app.route('/json-example/?<url>', methods=['GET', 'POST'])
+def json_example(url):
+
+
+    url = request.args.get('url')
 
     # Making a GET request
-    r = requests.get('https://www.geeksforgeeks.org/python-programming-language/')
-#
+    r = requests.get(url)
+    # r = requests.get(url);
 
     # Parsing the HTML
     soup = BeautifulSoup(r.content, 'html.parser')
     # print(soup.prettify())
     # print(type(soup.prettify()))
+    print(url)
+
+
+    print(name)
 #
 
     # return jsonify({'name':'Jimit',
     #                 'content': 'Some content'})
     return jsonify({'content':str(soup.prettify())})
+
+# TODO: make POST api call with url as parameter. copy json_example()
 
 @app.route('/person/', methods=['GET', 'POST'])
 def hello():
