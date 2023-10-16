@@ -8,6 +8,7 @@ function App() {
 
   const [data, setData] = useState();
   const [urlData, setUrlData] = useState();
+  const [returnText, setReturnText] = useState();
 
 
 
@@ -110,6 +111,7 @@ function App() {
       .then((responseData) => {
         // Update the state with the API data
         // setData(responseData);
+        setReturnText(`${responseData['content']}`);
         console.log(responseData);
       })
       .catch((error) => {
@@ -184,6 +186,7 @@ function App() {
 
         <div className="">
           Display text
+          <p>{returnText}</p>
         </div>
       </div>
 
