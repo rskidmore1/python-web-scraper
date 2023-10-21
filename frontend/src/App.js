@@ -11,23 +11,6 @@ function App() {
   const [returnText, setReturnText] = useState();
 
 
-
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/json-example", {
-  //     method: "GET", // or 'PUT'
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(data),
-  //   }).then(response => {
-  //     //handle response
-  //     console.log(response);
-  //   });
-
-
-  // TODO: make POST api call function here with url as parameter
-  // . store to value into state
-
   function getContent() {
 
     event.preventDefault();
@@ -66,31 +49,6 @@ function App() {
         console.error('There was a problem with the fetch operation:', error);
       });
 
-    // console.log(urlData);
-    // useEffect(() => {
-    //   fetch(URL, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json', // Set the appropriate content type
-    //     },
-    //     body: JSON.stringify(data), // Convert the data to JSON
-    //   })
-    //     .then((response) => {
-    //       if (!response.ok) {
-    //         throw new Error('Network response was not ok');
-    //       }
-    //       return response.json(); // Parse the response JSON
-    //     })
-    //     .then((responseData) => {
-    //       // Handle the response data here
-    //       console.log(responseData);
-    //     })
-    //     .catch((error) => {
-    //       // Handle errors here
-    //       console.error('There was a problem with the POST request:', error);
-    //     });
-    // }, []); // Empty dependency array to run this effect only once
-
 
     return false;
   }
@@ -111,7 +69,6 @@ function App() {
       })
       .then((responseData) => {
         // Update the state with the API data
-        // setData(responseData);
         setReturnText(`${responseData['content']}`);
         console.log(responseData);
       })
@@ -120,58 +77,6 @@ function App() {
       });
   }, []); // Empty dependency array to run this effect only once
 
-  // WORK ON THIS CODE
-  // }, []);
-  // useEffect(() => {
-  //   fetch('http://localhost:5000/json-example', {
-  //     method: 'get',
-  //     mode: 'no-cors',
-  //     headers: {
-  //       'Access-Control-Allow-Origin': '*'
-  //     },
-  //   })
-  //     .then(response => {
-  //       //handle response
-  //       // response.json()
-  //       console.log(response);
-  //     })
-  //     // .then(response => {
-  //     //   //handle data
-  //     //   console.log(response);
-  //     // })
-  //     .catch(error => {
-  //       //handle error
-  //     });
-  // });
-
-  // const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(null);
-
-  // useEffect(() => {
-  //   // Replace this URL with your API endpoint
-  //   const apiUrl = 'http://localhost:5000/json-example';
-  //   axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-  //   axios
-  //     .get(apiUrl)
-  //     .then((response) => {
-  //       // setData(response.data);
-  //       // setLoading(false);
-  //       console.log(data)
-  //     })
-  //     .catch((err) => {
-  //       // setError(err);
-  //       // setLoading(false);
-  //     });
-  // }, []);
-
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // if (error) {
-  //   return <div>Error: {error.message}</div>;
-  // }
 
   return (
     <div className="App container">
@@ -190,13 +95,6 @@ function App() {
           <p>{returnText}</p>
         </div>
       </div>
-
-      {/* <h1>API Data</h1>
-      <ul>
-        {data.map((item) => (
-          <li key={item.id}>{item.title}</li>
-        ))}
-      </ul> */}
 
     </div>
   );
