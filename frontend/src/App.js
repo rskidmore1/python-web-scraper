@@ -59,6 +59,7 @@ function App() {
       .then((responseData) => {
         // Update the state with the API data
         // setData(responseData);
+        setReturnText(`${responseData['content']}`);
         console.log(responseData);
       })
       .catch((error) => {
