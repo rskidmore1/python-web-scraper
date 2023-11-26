@@ -31,12 +31,9 @@ def json_example(url):
     soup = BeautifulSoup(r.content, 'html.parser')
 
     print(url)
+    paragraphText = soup.body
 
-    # return jsonify({'name':'Jimit',
-    #                 'content': 'Some content'})
-    return jsonify({'content':str(soup.prettify())})
-# TODO: make POST api call with url as parameter. copy json_example()
-
+    return jsonify({'content':str(paragraphText.prettify())})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
