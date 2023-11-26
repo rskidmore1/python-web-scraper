@@ -10,7 +10,6 @@ function App() {
   const [urlData, setUrlData] = useState();
   const [returnText, setReturnText] = useState();
 
-
   function getContent() {
 
     event.preventDefault();
@@ -21,6 +20,7 @@ function App() {
     var nameInput = form.elements['name'];
 
     if (nameInput) {
+      ``
       // Check if the input field exists before accessing its value
       var name = nameInput.value;
       alert('You entered: ' + name);
@@ -77,6 +77,8 @@ function App() {
       });
   }, []); // Empty dependency array to run this effect only once
 
+  const content = { __html: returnText };
+
 
   return (
     <div className="App container">
@@ -90,9 +92,9 @@ function App() {
           <button type="submit" className="btn btn-primary" onClick={getContent}>Submit</button>
         </form>
 
-        <div className="">
-          Display text
-          <p>{returnText}</p>
+        <div dangerouslySetInnerHTML={content}>
+          {/* Display text */}
+          {/* <p>{returnText}</p> */}
         </div>
       </div>
 
